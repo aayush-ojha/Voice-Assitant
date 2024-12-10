@@ -9,7 +9,7 @@ import os
 def initialize_engine():
     """Initialize the text-to-speech engine"""
     engine = pyttsx3.init()
-    engine.setProperty('rate', 150)    # Speed of speech
+    engine.setProperty('rate', 150)   
     return engine
 
 def speak(engine, text):
@@ -20,15 +20,15 @@ def speak(engine, text):
 def listen():
     """Listen for voice input"""
     recognizer = sr.Recognizer()
-    samplerate = 16000  # Sample rate for recording
-    duration = 5  # Duration of recording in seconds
+    samplerate = 16000  
+    duration = 5
 
     print("Listening...")
     recording = sd.rec(int(samplerate * duration), samplerate=samplerate, channels=1, dtype='int16')
-    sd.wait()  # Wait until the recording is finished
+    sd.wait()  
     audio_data = np.squeeze(recording)
 
-    # Convert the NumPy array to an AudioData instance
+    
     audio = sr.AudioData(audio_data.tobytes(), samplerate, 2)
 
     try:
